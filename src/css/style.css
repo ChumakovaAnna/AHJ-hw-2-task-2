@@ -1,0 +1,25 @@
+body {
+  /* background: #eee; */
+}
+
+.container {
+  width: 70%;
+  /* margin-left: auto; */
+  /* margin-right: auto; */
+}
+
+.title {
+  text-align: center;
+  font-weight: 700;
+}
+
+.title .cell {
+  background-color: rgb(207, 186, 93);
+}
+
+.cell {
+  /* background: rgb(202, 194, 149); */
+  margin: 1px;
+  padding: 5px;
+  border: rgb(207, 186, 93) 1px solid;
+}

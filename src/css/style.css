@@ -1,11 +1,5 @@
-body {
-  /* background: #eee; */
-}
-
-.container {
+.table {
   width: 70%;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
 }
 
 .title {
@@ -18,8 +12,8 @@ body {
 }
 
 .cell {
-  /* background: rgb(202, 194, 149); */
   margin: 1px;
   padding: 5px;
   border: rgb(207, 186, 93) 1px solid;
+  border-radius: 5px;
 }

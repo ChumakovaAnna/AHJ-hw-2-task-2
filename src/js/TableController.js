@@ -1,13 +1,13 @@
-import getJson from "./getJson";
-
 /**
- * Класс для работы с игровым полем
+ * Класс для прорисовки с игровым полем
  */
 export default class TableController {
   constructor() {
     this.container = null;
     this.data = null;
     this.tableList = null;
+    this.arrow = "&#129047;";
+    this.allArrows = null;
   }
 
   /**
@@ -26,13 +26,14 @@ export default class TableController {
    */
   drawUi() {
     this.checkBinding();
-    this.getData();
+    this.findAllArrows();
 
     this.container.innerHTML = `
     <div class="grid-noGutter" data-id="list"></div>
     `;
     this.tableList = this.container.querySelector("[data-id=list]");
     this.drawCells();
+    this.eraseArrows();
   }
 
   /**
@@ -47,13 +48,14 @@ export default class TableController {
   /**
    * Метод для получения json
    */
-  getData() {
-    this.data = getJson();
+  getData(json) {
+    this.data = json;
   }
 
   /**
- * Прорисовывает все ячейки в таблице
- */
+   * Прорисовывает все ячейки в таблице
+   * В ячейке с индексом Imdb фиксируем 2 знака, после запятой
+   */
   drawCells() {
     this.data.forEach((ele) => {
       if (ele.id) {
@@ -66,7 +68,8 @@ export default class TableController {
         this.drawOneCell(2, ele.year);
       }
       if (ele.imdb) {
-        this.drawOneCell(2, ele.imdb);
+        const text = ele.imdb.toFixed(2);
+        this.drawOneCell(2, text);
       }
     });
   }
@@ -84,5 +87,29 @@ export default class TableController {
         ${text}
       </div>`;
     this.tableList.insertAdjacentElement("beforeend", cellEl);
+  }
+
+  /**
+   * Метод для прорисовки стрелки
+   */
+  drawArrow(topic) {
+    const headerCell = document.querySelector(`[data-arrow=${topic}]`);
+    headerCell.innerHTML = this.arrow;
+  }
+
+  /**
+   * Метод, чтобы удалить стрелку
+   */
+  eraseArrows() {
+    this.allArrows.forEach((e) => {
+      e.innerHTML = "";
+    });
+  }
+
+  /**
+   * Метод для получения всех стрелок в таблице
+   */
+  findAllArrows() {
+    this.allArrows = document.querySelectorAll(".arrow");
   }
 }

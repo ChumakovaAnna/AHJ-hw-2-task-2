@@ -7,6 +7,12 @@
   font-weight: 700;
 }
 
+.arrow {
+  padding: 0;
+  font-weight: 400;
+  font-size:  13px;
+}
+
 .title .cell {
   background-color: rgb(207, 186, 93);
 }

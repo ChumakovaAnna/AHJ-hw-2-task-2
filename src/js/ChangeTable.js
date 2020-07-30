@@ -19,14 +19,15 @@ export default class ChangeTable {
     console.log("Сортировка по id");
     this.json = this.filters.sortById();
     this.table.getData(this.json);
-    this.table.drawArrow("id");
     this.table.drawUi();
+    this.table.drawArrow("id");
 
     setTimeout(() => {
       console.log("Сортировка по title");
       this.json = this.filters.sortByTitle();
       this.table.getData(this.json);
       this.table.drawUi();
+      this.table.drawArrow("title");
     }, 5000);
 
     setTimeout(() => {
@@ -34,6 +35,7 @@ export default class ChangeTable {
       this.json = this.filters.sortByYear();
       this.table.getData(this.json);
       this.table.drawUi();
+      this.table.drawArrow("year");
     }, 10000);
 
     setTimeout(() => {
@@ -41,6 +43,7 @@ export default class ChangeTable {
       this.json = this.filters.sortByImdb();
       this.table.getData(this.json);
       this.table.drawUi();
+      this.table.drawArrow("imdb");
     }, 15000);
   }
 }

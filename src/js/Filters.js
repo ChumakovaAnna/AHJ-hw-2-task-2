@@ -18,7 +18,7 @@ export default class Filters {
    * Фильтр по Title
    */
   sortByTitle() {
-    const jsonTitle = this.json.slice().sort((a, b) => a.title - b.title);
+    const jsonTitle = this.json.slice().sort((a, b) => (a.title > b.title ? 1 : -1));
     return jsonTitle;
   }
   /**
